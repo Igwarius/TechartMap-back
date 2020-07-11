@@ -6,16 +6,13 @@ using System.Text;
 
 namespace TechartMap_back.DAL.Models
 {
-   public class User
+    public class RefreshToken
     {
-
         [Key]
-        [StringLength(15, MinimumLength = 3)]
+        [ForeignKey("User")]
         public string Login { get; set; }
-       
-        [Required]
-        [Column(TypeName = "varchar(200)")]
-        public string Password { get; set; }
-        public string Role { get; set; }
+        [Column(TypeName = "varchar(2000)")]
+        public string Token { get; set; }
+        public User User { get; set; }
     }
 }
