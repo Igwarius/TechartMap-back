@@ -35,7 +35,7 @@ namespace TechartMap_back
             services.AddCors();
             services.AddEntityFrameworkNpgsql().AddDbContext<Context>(options =>
                 options.UseNpgsql(Configuration.GetConnectionString("Context")));
-            services.AddMvc(option => option.EnableEndpointRouting = false);
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -43,12 +43,11 @@ namespace TechartMap_back
         {
             app.UseCors(opts => opts
                 .WithOrigins(
-                    "http://localhost:44399")
+                    "http://localhost:3000")
                 .AllowAnyHeader()
                 .AllowAnyMethod()
                 .AllowCredentials()
             );
-            app.UseMvc();
             if (env.IsDevelopment()) app.UseDeveloperExceptionPage();
 
             if (env.IsDevelopment()) app.UseDeveloperExceptionPage();
