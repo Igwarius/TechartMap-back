@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using TechartMap_back.DAL.Models;
 using TechartMap_back.DAL.Repository.Interfaces;
 using TechartMap_back.Services.Interfaces;
@@ -20,10 +17,7 @@ namespace TechartMap_back.Services.Services
         public async Task<RefreshToken> GetRefreshToken(string login)
         {
             var res = await _refreshTokenRepository.GetRefreshToken(login);
-            if (res == null)
-            {
-                return null;
-            }
+            if (res == null) return null;
 
             var refreshToken = new RefreshToken
             {
@@ -45,4 +39,3 @@ namespace TechartMap_back.Services.Services
         }
     }
 }
-

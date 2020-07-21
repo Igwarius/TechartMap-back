@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using TechartMap_back.DAL.Models;
 using TechartMap_back.DAL.Repository.Interfaces;
 
 namespace TechartMap_back.DAL.Repository.Classes
 {
-   public class RefreshTokenRepository : IRefreshTokenRepository
+    public class RefreshTokenRepository : IRefreshTokenRepository
     {
         private readonly Context.Context _commonContext;
 
@@ -25,21 +22,15 @@ namespace TechartMap_back.DAL.Repository.Classes
         public async Task DeleteRefreshToken(string username)
         {
             var refreshToken = await _commonContext.RefreshTokens.FindAsync(username);
-            if (refreshToken != null)
-            {
-                _commonContext.Remove(refreshToken);
-            }
+            if (refreshToken != null) _commonContext.Remove(refreshToken);
             await _commonContext.SaveChangesAsync();
         }
 
         public async Task SaveRefreshToken(string login, string newRefreshToken)
         {
-            var refreshToken = new RefreshToken { Login = login, Token = newRefreshToken };
+            var refreshToken = new RefreshToken {Login = login, Token = newRefreshToken};
             var existingTokens = await _commonContext.RefreshTokens.FindAsync(login);
-            if (existingTokens != null)
-            {
-                _commonContext.RefreshTokens.Remove(existingTokens);
-            }
+            if (existingTokens != null) _commonContext.RefreshTokens.Remove(existingTokens);
 
             _commonContext.RefreshTokens.Add(refreshToken);
             await _commonContext.SaveChangesAsync();

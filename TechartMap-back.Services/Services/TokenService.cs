@@ -29,19 +29,14 @@ namespace TechartMap_back.Services.Services
 
         public static List<Claim> GetClaims(string token)
         {
-            if (token == null)
-            {
-                return null;
-            }
+            if (token == null) return null;
             var claims = new List<Claim>();
             var handler = new JwtSecurityTokenHandler();
             var readToken = handler.ReadToken(token) as JwtSecurityToken;
 
             if (readToken != null)
-            {
                 foreach (var item in readToken.Claims)
                     claims.Add(item);
-            }
 
             return claims;
         }
@@ -53,7 +48,7 @@ namespace TechartMap_back.Services.Services
                 {
                     ValidAudience = AuthOptions.AUDIENCE,
                     ValidIssuer = AuthOptions.ISSUER,
-                    IssuerSigningKeys = new[] { new SymmetricSecurityKey(Encoding.ASCII.GetBytes(AuthOptions.KEY)) }
+                    IssuerSigningKeys = new[] {new SymmetricSecurityKey(Encoding.ASCII.GetBytes(AuthOptions.KEY))}
                 };
 
             var validate = new JwtSecurityTokenHandler();
@@ -74,10 +69,7 @@ namespace TechartMap_back.Services.Services
             if (!IsExpired(token))
             {
                 var tokenClaims = GetClaims(token);
-                if (tokenClaims != null)
-                {
-                    return tokenClaims;
-                }
+                if (tokenClaims != null) return tokenClaims;
             }
 
             return null;

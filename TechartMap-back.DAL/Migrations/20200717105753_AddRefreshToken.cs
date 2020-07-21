@@ -7,20 +7,20 @@ namespace TechartMap_back.DAL.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "RefreshTokens",
-                columns: table => new
+                "RefreshTokens",
+                table => new
                 {
                     Login = table.Column<string>(nullable: false),
-                    Token = table.Column<string>(type: "varchar(2000)", nullable: true)
+                    Token = table.Column<string>("varchar(2000)", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_RefreshTokens", x => x.Login);
                     table.ForeignKey(
-                        name: "FK_RefreshTokens_Users_Login",
-                        column: x => x.Login,
-                        principalTable: "Users",
-                        principalColumn: "Login",
+                        "FK_RefreshTokens_Users_Login",
+                        x => x.Login,
+                        "Users",
+                        "Login",
                         onDelete: ReferentialAction.Cascade);
                 });
         }
@@ -28,7 +28,7 @@ namespace TechartMap_back.DAL.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "RefreshTokens");
+                "RefreshTokens");
         }
     }
 }

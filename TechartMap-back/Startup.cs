@@ -35,7 +35,6 @@ namespace TechartMap_back
             services.AddCors();
             services.AddEntityFrameworkNpgsql().AddDbContext<Context>(options =>
                 options.UseNpgsql(Configuration.GetConnectionString("Context")));
-            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
