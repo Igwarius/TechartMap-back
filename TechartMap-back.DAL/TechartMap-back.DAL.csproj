@@ -1,8 +1,8 @@
-﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-    <RootNamespace>TechartMap_back</RootNamespace>
+    <RootNamespace>TechartMap_back.DAL</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
@@ -10,11 +10,7 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\TechartMap-back.DAL\TechartMap-back.DAL.csproj" />
-    <ProjectReference Include="..\TechartMap-back.Services\TechartMap-back.Services.csproj" />
+    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="3.1.4" />
   </ItemGroup>
 
 </Project>
