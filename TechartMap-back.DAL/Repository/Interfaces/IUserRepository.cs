@@ -10,5 +10,6 @@ namespace TechartMap_back.DAL.Repository.Interfaces
         Task<User> GetCurrentUser(string username);
         Task AddUser(User user);
         Task<User> CheckUser(User user);
+        Task BanUser(BannedUser bannedUser);
     }
 }

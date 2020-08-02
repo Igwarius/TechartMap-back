@@ -28,6 +28,8 @@ namespace TechartMap_back
         {
             services.AddTransient<IUserService, UserService>();
             services.AddTransient<IUserRepository, UserRepository>();
+            services.AddTransient<ICityService, CityService>();
+            services.AddTransient<ICityRepository, CityRepository>();
             services.AddTransient<IRefreshTokenRepository, RefreshTokenRepository>();
             services.AddTransient<IRefreshTokenService, RefreshTokenService>();
             services.AddControllers();
