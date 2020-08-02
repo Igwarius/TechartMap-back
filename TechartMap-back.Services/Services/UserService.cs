@@ -45,7 +45,7 @@ namespace TechartMap_back.Services.Services
         {
             var checkUser = await _userRepository.CheckUser(new User
                 {Login = user.Login, Password = HashFunc.GetHashFromPassword(user.Password), Role = user.Role});
-            if (checkUser == null) return null;
+             if (checkUser == null) return null;
 
             var foundUser = new User
             {

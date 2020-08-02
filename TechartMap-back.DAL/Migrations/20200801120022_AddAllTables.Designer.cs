@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using TechartMap_back.DAL.Context;
@@ -9,9 +10,10 @@ using TechartMap_back.DAL.Context;
 namespace TechartMap_back.DAL.Migrations
 {
     [DbContext(typeof(Context.Context))]
-    partial class ContextModelSnapshot : ModelSnapshot
+    [Migration("20200801120022_AddAllTables")]
+    partial class AddAllTables
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -229,14 +231,17 @@ namespace TechartMap_back.DAL.Migrations
                     b.Property<string>("TransactionType")
                         .HasColumnType("text");
 
-                    b.Property<string>("UserLogin")
+                    b.Property<int>("UserLogin")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("UserLogin1")
                         .HasColumnType("character varying(15)");
 
                     b.HasKey("Id");
 
                     b.HasIndex("SessionId");
 
-                    b.HasIndex("UserLogin");
+                    b.HasIndex("UserLogin1");
 
                     b.ToTable("Transactions");
                 });
@@ -338,7 +343,7 @@ namespace TechartMap_back.DAL.Migrations
 
                     b.HasOne("TechartMap_back.DAL.Models.User", "User")
                         .WithMany("Transactions")
-                        .HasForeignKey("UserLogin");
+                        .HasForeignKey("UserLogin1");
                 });
 #pragma warning restore 612, 618
         }
