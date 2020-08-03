@@ -9,6 +9,6 @@ namespace TechartMap_back.DAL.Repository.Interfaces
         Task<IEnumerable<Cinema>> GetCinemas();
         Task<Cinema> GetCurrentCinema(string name);
         Task AddCinema(Cinema cinema);
-        Task<Cinema> GetCurrentCinemaByCity(string cityName);
+        Task<IEnumerable<Cinema>> GetCinemasByCity(string cityName);
     }
 }

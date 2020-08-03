@@ -21,7 +21,6 @@ namespace TechartMap_back.Services.Services
         public async Task<City> GetCurrentCity(string name)
         {
             var foundCity = await _cityRepository.GetCurrentCity(name);
-            if (foundCity == null) return null;
 
             return foundCity;
         }

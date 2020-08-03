@@ -22,8 +22,7 @@ namespace TechartMap_back.DAL.Repository.Classes
         public async Task<City> GetCurrentCity(string name)
         {
             var city = await _context.Cities.FirstOrDefaultAsync(a => a.Name == name);
-            if (city != null) return city;
-            return null;
+            return city;
         }
 
         public async Task AddCity(City city)
