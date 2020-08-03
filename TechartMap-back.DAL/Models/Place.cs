@@ -15,5 +15,6 @@ namespace TechartMap_back.DAL.Models
 
         public int RowId { get; set; }
         public Row Row { get; set; }
+        public string PlaceType { get; set; }
     }
 }
