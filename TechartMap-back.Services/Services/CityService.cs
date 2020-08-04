@@ -6,13 +6,15 @@ using TechartMap_back.Services.Interfaces;
 
 namespace TechartMap_back.Services.Services
 {
-    public class CityService:ICityService
+    public class CityService : ICityService
     {
         private readonly ICityRepository _cityRepository;
+
         public CityService(ICityRepository cityRepository)
         {
             _cityRepository = cityRepository;
         }
+
         public async Task<IEnumerable<City>> GetCities()
         {
             return await _cityRepository.GetCities();
@@ -32,6 +34,5 @@ namespace TechartMap_back.Services.Services
                 Name = city.Name
             });
         }
-
     }
 }

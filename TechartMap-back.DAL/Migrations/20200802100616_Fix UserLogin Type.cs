@@ -7,34 +7,34 @@ namespace TechartMap_back.DAL.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropForeignKey(
-                name: "FK_Transactions_Users_UserLogin1",
-                table: "Transactions");
+                "FK_Transactions_Users_UserLogin1",
+                "Transactions");
 
             migrationBuilder.DropIndex(
-                name: "IX_Transactions_UserLogin1",
-                table: "Transactions");
+                "IX_Transactions_UserLogin1",
+                "Transactions");
 
             migrationBuilder.DropColumn(
-                name: "UserLogin1",
-                table: "Transactions");
+                "UserLogin1",
+                "Transactions");
 
             migrationBuilder.AlterColumn<string>(
-                name: "UserLogin",
-                table: "Transactions",
+                "UserLogin",
+                "Transactions",
                 nullable: true,
                 oldClrType: typeof(int),
                 oldType: "integer");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Transactions_UserLogin",
-                table: "Transactions",
-                column: "UserLogin");
+                "IX_Transactions_UserLogin",
+                "Transactions",
+                "UserLogin");
 
             migrationBuilder.AddForeignKey(
-                name: "FK_Transactions_Users_UserLogin",
-                table: "Transactions",
-                column: "UserLogin",
-                principalTable: "Users",
+                "FK_Transactions_Users_UserLogin",
+                "Transactions",
+                "UserLogin",
+                "Users",
                 principalColumn: "Login",
                 onDelete: ReferentialAction.Restrict);
         }
@@ -42,37 +42,37 @@ namespace TechartMap_back.DAL.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropForeignKey(
-                name: "FK_Transactions_Users_UserLogin",
-                table: "Transactions");
+                "FK_Transactions_Users_UserLogin",
+                "Transactions");
 
             migrationBuilder.DropIndex(
-                name: "IX_Transactions_UserLogin",
-                table: "Transactions");
+                "IX_Transactions_UserLogin",
+                "Transactions");
 
             migrationBuilder.AlterColumn<int>(
-                name: "UserLogin",
-                table: "Transactions",
-                type: "integer",
+                "UserLogin",
+                "Transactions",
+                "integer",
                 nullable: false,
                 oldClrType: typeof(string),
                 oldNullable: true);
 
             migrationBuilder.AddColumn<string>(
-                name: "UserLogin1",
-                table: "Transactions",
-                type: "character varying(15)",
+                "UserLogin1",
+                "Transactions",
+                "character varying(15)",
                 nullable: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_Transactions_UserLogin1",
-                table: "Transactions",
-                column: "UserLogin1");
+                "IX_Transactions_UserLogin1",
+                "Transactions",
+                "UserLogin1");
 
             migrationBuilder.AddForeignKey(
-                name: "FK_Transactions_Users_UserLogin1",
-                table: "Transactions",
-                column: "UserLogin1",
-                principalTable: "Users",
+                "FK_Transactions_Users_UserLogin1",
+                "Transactions",
+                "UserLogin1",
+                "Users",
                 principalColumn: "Login",
                 onDelete: ReferentialAction.Restrict);
         }

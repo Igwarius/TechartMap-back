@@ -8,8 +8,8 @@ namespace TechartMap_back.DAL.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "BannedUser",
-                columns: table => new
+                "BannedUser",
+                table => new
                 {
                     Login = table.Column<string>(nullable: false),
                     Reason = table.Column<string>(nullable: false),
@@ -20,10 +20,10 @@ namespace TechartMap_back.DAL.Migrations
                 {
                     table.PrimaryKey("PK_BannedUser", x => x.Login);
                     table.ForeignKey(
-                        name: "FK_BannedUser_Users_Login",
-                        column: x => x.Login,
-                        principalTable: "Users",
-                        principalColumn: "Login",
+                        "FK_BannedUser_Users_Login",
+                        x => x.Login,
+                        "Users",
+                        "Login",
                         onDelete: ReferentialAction.Cascade);
                 });
         }
@@ -31,7 +31,7 @@ namespace TechartMap_back.DAL.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "BannedUser");
+                "BannedUser");
         }
     }
 }

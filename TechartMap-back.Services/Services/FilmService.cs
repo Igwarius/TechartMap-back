@@ -6,13 +6,15 @@ using TechartMap_back.Services.Interfaces;
 
 namespace TechartMap_back.Services.Services
 {
-    public class FilmService:IFilmService
+    public class FilmService : IFilmService
     {
         private readonly IFilmRepository _FilmRepository;
+
         public FilmService(IFilmRepository FilmRepository)
         {
             _FilmRepository = FilmRepository;
         }
+
         public async Task<IEnumerable<Film>> GetFilms()
         {
             return await _FilmRepository.GetFilms();
@@ -34,7 +36,8 @@ namespace TechartMap_back.Services.Services
                 StartDate = film.StartDate,
                 EndDate = film.EndDate,
                 AgeLimit = film.AgeLimit,
-                Genre =film.Genre});
+                Genre = film.Genre
+            });
         }
     }
 }
