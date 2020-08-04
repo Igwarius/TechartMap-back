@@ -36,6 +36,10 @@ namespace TechartMap_back
             services.AddTransient<IFilmRepository, FilmRepository>();
             services.AddTransient<IHallService, HallService>();
             services.AddTransient<IHallRepository, HallRepository>();
+            services.AddTransient<ISessionService, SessionService>();
+            services.AddTransient<ISessionRepository, SessionRepository>();
+            services.AddTransient<ITransactionService, TransactionService>();
+            services.AddTransient<ITransactionRepository, TransactionRepository>();
             services.AddTransient<IRefreshTokenRepository, RefreshTokenRepository>();
             services.AddTransient<IRefreshTokenService, RefreshTokenService>();
             services.AddControllers();
