@@ -6,13 +6,15 @@ using TechartMap_back.DAL.Repository.Interfaces;
 
 namespace TechartMap_back.DAL.Repository.Classes
 {
-    public class TransactionRepository:ITransactionRepository
+    public class TransactionRepository : ITransactionRepository
     {
         private readonly Context.Context _context;
+
         public TransactionRepository(Context.Context context)
         {
             _context = context;
         }
+
         public async Task<IEnumerable<Transaction>> GetTransactions()
         {
             return await Task.FromResult(_context.Transactions);

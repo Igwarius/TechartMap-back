@@ -7,7 +7,7 @@ namespace TechartMap_back.Controllers
 {
     [Route("session")]
     [ApiController]
-    public class SessionController: Controller
+    public class SessionController : Controller
     {
         private readonly ISessionService _sessionService;
 
@@ -15,6 +15,7 @@ namespace TechartMap_back.Controllers
         {
             _sessionService = sessionService;
         }
+
         [HttpGet]
         [Route("sessions")]
         public async Task<IActionResult> GetAllSessions()
@@ -22,6 +23,7 @@ namespace TechartMap_back.Controllers
             var cities = await _sessionService.GetSessions();
             return Ok(cities);
         }
+
         [HttpGet]
         [Route("session/{id}")]
         public async Task<IActionResult> GetSession(int id)
@@ -29,6 +31,7 @@ namespace TechartMap_back.Controllers
             var sessions = await _sessionService.GetCurrentSession(id);
             return Ok(sessions);
         }
+
         [HttpGet]
         [Route("hall-by-session/{id}")]
         public async Task<IActionResult> GetSessionByCity(int id)
@@ -36,6 +39,7 @@ namespace TechartMap_back.Controllers
             var hall = await _sessionService.GetHallBySession(id);
             return Ok(hall);
         }
+
         [HttpPost]
         [Route("session")]
         public async Task<IActionResult> AddSession([FromBody] Session Session)

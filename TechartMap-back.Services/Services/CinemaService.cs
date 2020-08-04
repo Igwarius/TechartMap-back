@@ -6,13 +6,15 @@ using TechartMap_back.Services.Interfaces;
 
 namespace TechartMap_back.Services.Services
 {
-    public class CinemaService:ICinemaService
+    public class CinemaService : ICinemaService
     {
         private readonly ICinemaRepository _cinemaRepository;
+
         public CinemaService(ICinemaRepository CinemaRepository)
         {
             _cinemaRepository = CinemaRepository;
         }
+
         public async Task<IEnumerable<Cinema>> GetCinemas()
         {
             return await _cinemaRepository.GetCinemas();
@@ -33,6 +35,7 @@ namespace TechartMap_back.Services.Services
                 CityId = cinema.CityId
             });
         }
+
         public async Task<IEnumerable<Cinema>> GetCinemasByCity(string cityName)
         {
             return await _cinemaRepository.GetCinemasByCity(cityName);

@@ -7,15 +7,15 @@ namespace TechartMap_back.Controllers
 {
     [Route("hall")]
     [ApiController]
-    public class HallController:Controller
+    public class HallController : Controller
     {
-
         private readonly IHallService _hallService;
 
         public HallController(IHallService hallService)
         {
             _hallService = hallService;
         }
+
         [HttpGet]
         [Route("halls")]
         public async Task<IActionResult> GetAllHalls()
@@ -23,6 +23,7 @@ namespace TechartMap_back.Controllers
             var cities = await _hallService.GetHalls();
             return Ok(cities);
         }
+
         [HttpGet]
         [Route("hall/{number}")]
         public async Task<IActionResult> GetHall(int number)
@@ -30,6 +31,7 @@ namespace TechartMap_back.Controllers
             var halls = await _hallService.GetCurrentHall(number);
             return Ok(halls);
         }
+
         [HttpPost]
         [Route("hall")]
         public async Task<IActionResult> AddHall([FromBody] Hall hall)
@@ -37,6 +39,7 @@ namespace TechartMap_back.Controllers
             await _hallService.AddHall(hall);
             return Ok();
         }
+
         [HttpGet]
         [Route("rows")]
         public async Task<IActionResult> GetAllRows()
@@ -44,6 +47,7 @@ namespace TechartMap_back.Controllers
             var cities = await _hallService.GetRows();
             return Ok(cities);
         }
+
         [HttpGet]
         [Route("row/{number}")]
         public async Task<IActionResult> GetRow(int number)
@@ -51,6 +55,7 @@ namespace TechartMap_back.Controllers
             var Rows = await _hallService.GetCurrentRow(number);
             return Ok(Rows);
         }
+
         [HttpPost]
         [Route("row")]
         public async Task<IActionResult> AddRow([FromBody] Row row)
@@ -58,6 +63,7 @@ namespace TechartMap_back.Controllers
             await _hallService.AddRow(row);
             return Ok();
         }
+
         [HttpGet]
         [Route("places")]
         public async Task<IActionResult> GetAllPlaces()
@@ -65,6 +71,7 @@ namespace TechartMap_back.Controllers
             var cities = await _hallService.GetPlaces();
             return Ok(cities);
         }
+
         [HttpGet]
         [Route("place/{number}")]
         public async Task<IActionResult> GetPlace(int number)
@@ -72,6 +79,7 @@ namespace TechartMap_back.Controllers
             var Places = await _hallService.GetCurrentPlace(number);
             return Ok(Places);
         }
+
         [HttpPost]
         [Route("place")]
         public async Task<IActionResult> AddPlace([FromBody] Place place)
@@ -79,6 +87,5 @@ namespace TechartMap_back.Controllers
             await _hallService.AddPlace(place);
             return Ok();
         }
-
     }
 }

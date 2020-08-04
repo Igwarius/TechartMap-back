@@ -7,13 +7,15 @@ using TechartMap_back.DAL.Repository.Interfaces;
 
 namespace TechartMap_back.DAL.Repository.Classes
 {
-    public class CinemaRepository:ICinemaRepository
+    public class CinemaRepository : ICinemaRepository
     {
         private readonly Context.Context _context;
+
         public CinemaRepository(Context.Context context)
         {
             _context = context;
         }
+
         public async Task<IEnumerable<Cinema>> GetCinemas()
         {
             return await Task.FromResult(_context.Cinemas);
@@ -36,11 +38,9 @@ namespace TechartMap_back.DAL.Repository.Classes
 
         public async Task<IEnumerable<Cinema>> GetCinemasByCity(string cityName)
         {
-            var city = await _context.Cities.FirstOrDefaultAsync(a => a.Name ==cityName);
+            var city = await _context.Cities.FirstOrDefaultAsync(a => a.Name == cityName);
             var cinemas = await Task.FromResult(_context.Cinemas.Where(a => a.CityId == city.Id));
             return cinemas;
         }
     }
 }
-
-    

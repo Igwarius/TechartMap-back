@@ -9,6 +9,5 @@ namespace TechartMap_back.DAL.Repository.Interfaces
         Task<IEnumerable<Film>> GetFilms();
         Task<Film> GetCurrentFilm(string name);
         Task AddFilm(Film film);
-   
     }
 }

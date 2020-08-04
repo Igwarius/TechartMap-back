@@ -7,7 +7,7 @@ namespace TechartMap_back.Controllers
 {
     [Route("transaction")]
     [ApiController]
-    public class TransactionController:Controller
+    public class TransactionController : Controller
     {
         private readonly ITransactionService _transactionService;
 
@@ -15,6 +15,7 @@ namespace TechartMap_back.Controllers
         {
             _transactionService = transactionService;
         }
+
         [HttpGet]
         [Route("transactions")]
         public async Task<IActionResult> GetAllTransactions()
@@ -22,6 +23,7 @@ namespace TechartMap_back.Controllers
             var cities = await _transactionService.GetTransactions();
             return Ok(cities);
         }
+
         [HttpGet]
         [Route("transaction/{id}")]
         public async Task<IActionResult> GetTransaction(int id)
@@ -29,6 +31,7 @@ namespace TechartMap_back.Controllers
             var transactions = await _transactionService.GetCurrentTransaction(id);
             return Ok(transactions);
         }
+
         [HttpPost]
         [Route("transaction")]
         public async Task<IActionResult> AddTransaction([FromBody] Transaction transaction)

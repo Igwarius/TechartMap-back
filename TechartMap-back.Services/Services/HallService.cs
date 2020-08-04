@@ -6,13 +6,15 @@ using TechartMap_back.Services.Interfaces;
 
 namespace TechartMap_back.Services.Services
 {
-    public class HallService:IHallService
+    public class HallService : IHallService
     {
         private readonly IHallRepository _hallRepository;
+
         public HallService(IHallRepository hallRepository)
         {
             _hallRepository = hallRepository;
         }
+
         public async Task<IEnumerable<Hall>> GetHalls()
         {
             return await _hallRepository.GetHalls();
@@ -29,13 +31,14 @@ namespace TechartMap_back.Services.Services
         {
             await _hallRepository.AddHall(new Hall
             {
-              Number = hall.Number,
-              CinemaId = hall.CinemaId,
-              Cinema = hall.Cinema,
-              Sessions = hall.Sessions,
-              Rows = hall.Rows
+                Number = hall.Number,
+                CinemaId = hall.CinemaId,
+                Cinema = hall.Cinema,
+                Sessions = hall.Sessions,
+                Rows = hall.Rows
             });
         }
+
         public async Task<IEnumerable<Row>> GetRows()
         {
             return await _hallRepository.GetRows();
@@ -54,9 +57,9 @@ namespace TechartMap_back.Services.Services
             {
                 Number = row.Number,
                 HallId = row.HallId
-                
             });
         }
+
         public async Task<IEnumerable<Place>> GetPlaces()
         {
             return await _hallRepository.GetPlaces();
@@ -77,7 +80,6 @@ namespace TechartMap_back.Services.Services
                 PlaceType = place.PlaceType,
                 Row = place.Row,
                 RowId = place.RowId
-                
             });
         }
     }

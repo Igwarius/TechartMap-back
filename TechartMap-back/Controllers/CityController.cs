@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using TechartMap_back.DAL.Models;
 using TechartMap_back.Services.Interfaces;
@@ -10,7 +7,7 @@ namespace TechartMap_back.Controllers
 {
     [Route("city")]
     [ApiController]
-    public class CityController:Controller
+    public class CityController : Controller
     {
         private readonly ICityService _CityService;
 
@@ -18,6 +15,7 @@ namespace TechartMap_back.Controllers
         {
             _CityService = CityService;
         }
+
         [HttpGet]
         [Route("cities")]
         public async Task<IActionResult> GetAllCities()
@@ -25,6 +23,7 @@ namespace TechartMap_back.Controllers
             var cities = await _CityService.GetCities();
             return Ok(cities);
         }
+
         [HttpGet]
         [Route("city/{name}")]
         public async Task<IActionResult> GetCity(string name)

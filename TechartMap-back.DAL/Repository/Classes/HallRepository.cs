@@ -6,13 +6,15 @@ using TechartMap_back.DAL.Repository.Interfaces;
 
 namespace TechartMap_back.DAL.Repository.Classes
 {
-    public class HallRepository:IHallRepository
+    public class HallRepository : IHallRepository
     {
         private readonly Context.Context _context;
+
         public HallRepository(Context.Context context)
         {
             _context = context;
         }
+
         public async Task<IEnumerable<Hall>> GetHalls()
         {
             return await Task.FromResult(_context.Halls);
@@ -30,6 +32,7 @@ namespace TechartMap_back.DAL.Repository.Classes
 
             await _context.SaveChangesAsync();
         }
+
         public async Task<IEnumerable<Row>> GetRows()
         {
             return await Task.FromResult(_context.Rows);
@@ -47,6 +50,7 @@ namespace TechartMap_back.DAL.Repository.Classes
 
             await _context.SaveChangesAsync();
         }
+
         public async Task<IEnumerable<Place>> GetPlaces()
         {
             return await Task.FromResult(_context.Places);

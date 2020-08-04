@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using TechartMap_back.DAL.Models;
@@ -7,13 +6,15 @@ using TechartMap_back.DAL.Repository.Interfaces;
 
 namespace TechartMap_back.DAL.Repository.Classes
 {
-    public class FilmRepository:IFilmRepository
+    public class FilmRepository : IFilmRepository
     {
         private readonly Context.Context _context;
+
         public FilmRepository(Context.Context context)
         {
             _context = context;
         }
+
         public async Task<IEnumerable<Film>> GetFilms()
         {
             return await Task.FromResult(_context.Films);
@@ -33,6 +34,5 @@ namespace TechartMap_back.DAL.Repository.Classes
 
             await _context.SaveChangesAsync();
         }
-
     }
 }

@@ -5,7 +5,6 @@ using TechartMap_back.Services.Interfaces;
 
 namespace TechartMap_back.Controllers
 {
-
     [Route("film")]
     [ApiController]
     public class FilmController : Controller
@@ -42,4 +41,3 @@ namespace TechartMap_back.Controllers
         }
     }
 }
-        

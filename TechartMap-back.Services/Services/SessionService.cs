@@ -6,13 +6,15 @@ using TechartMap_back.Services.Interfaces;
 
 namespace TechartMap_back.Services.Services
 {
-    public class SessionService:ISessionService
+    public class SessionService : ISessionService
     {
         private readonly ISessionRepository _sessionRepository;
+
         public SessionService(ISessionRepository sessionRepository)
         {
             _sessionRepository = sessionRepository;
         }
+
         public async Task<IEnumerable<Session>> GetSessions()
         {
             return await _sessionRepository.GetSessions();
@@ -29,18 +31,18 @@ namespace TechartMap_back.Services.Services
         {
             await _sessionRepository.AddSession(new Session
             {
-               HallId = session.HallId,
-               FilmId = session.FilmId,
-               Price = session.Price,
-               Date = session.Date,
-               Film = session.Film,
-               Hall = session.Hall
+                HallId = session.HallId,
+                FilmId = session.FilmId,
+                Price = session.Price,
+                Date = session.Date,
+                Film = session.Film,
+                Hall = session.Hall
             });
         }
 
         public async Task<List<List<PlaceResponse>>> GetHallBySession(int id)
         {
-           return await _sessionRepository.GetHallBySession(id);
+            return await _sessionRepository.GetHallBySession(id);
         }
     }
 }

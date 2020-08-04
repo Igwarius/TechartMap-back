@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using System.Security.Cryptography.X509Certificates;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using TechartMap_back.DAL.Models;
@@ -8,13 +7,15 @@ using TechartMap_back.DAL.Repository.Interfaces;
 
 namespace TechartMap_back.DAL.Repository.Classes
 {
-    public class SessionRepository :ISessionRepository
+    public class SessionRepository : ISessionRepository
     {
         private readonly Context.Context _context;
+
         public SessionRepository(Context.Context context)
         {
             _context = context;
         }
+
         public async Task<IEnumerable<Session>> GetSessions()
         {
             return await Task.FromResult(_context.Sessions);
@@ -35,24 +36,25 @@ namespace TechartMap_back.DAL.Repository.Classes
         public async Task<List<List<PlaceResponse>>> GetHallBySession(int id)
         {
             var hallList = new List<List<PlaceResponse>>();
-        var session = await _context.Sessions.FirstOrDefaultAsync(a => a.Id == id);
-        var hall= await _context.Halls.FirstOrDefaultAsync(x => x.Id == session.HallId);
-        var allRows = _context.Rows.Where(x => x.HallId == hall.Id);
-        foreach (var row in allRows)
-        {
-           var rowList = new List<PlaceResponse>();
-                var allPlaces = _context.Places.Where(a => a.RowId == row.Id);
-            foreach (var place in allPlaces)
+            var session = await _context.Sessions.FirstOrDefaultAsync(a => a.Id == id);
+            var hall = await _context.Halls.FirstOrDefaultAsync(x => x.Id == session.HallId);
+            var allRows = _context.Rows.Where(x => x.HallId == hall.Id);
+            foreach (var row in allRows)
             {
-                var transact = await _context.Transactions.FirstOrDefaultAsync(a => a.PlaceId == place.Id);
-                var isFree = transact == null;
-                var placeResponse = new PlaceResponse(place.Number, isFree, place.PlaceType);
-                rowList.Add(placeResponse);
-                } 
-            hallList.Add(rowList);
-        }
+                var rowList = new List<PlaceResponse>();
+                var allPlaces = _context.Places.Where(a => a.RowId == row.Id);
+                foreach (var place in allPlaces)
+                {
+                    var transact = await _context.Transactions.FirstOrDefaultAsync(a => a.PlaceId == place.Id);
+                    var isFree = transact == null;
+                    var placeResponse = new PlaceResponse(place.Number, isFree, place.PlaceType);
+                    rowList.Add(placeResponse);
+                }
 
-        return hallList;
+                hallList.Add(rowList);
+            }
+
+            return hallList;
         }
     }
 }
