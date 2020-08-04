@@ -10,5 +10,6 @@ namespace TechartMap_back.Services.Interfaces
         Task AddUser(User user);
         Task<User> GetCurrentUser(string login);
         Task<Tokens> CheckUser(User user);
+        Task BanUser(BannedUser user);
     }
 }

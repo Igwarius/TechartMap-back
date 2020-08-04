@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using TechartMap_back.DAL.Models;
 using TechartMap_back.DAL.Repository.Interfaces;
@@ -73,6 +74,17 @@ namespace TechartMap_back.Services.Services
             }
 
             return null;
+        }
+
+        public async Task BanUser(BannedUser user)
+        {
+            await _userRepository.BanUser(new BannedUser
+            {
+                Login = user.Login,
+                BanDate = DateTime.Now,
+                Reason = user.Reason,
+                Period = user.Period
+            });
         }
     }
 }

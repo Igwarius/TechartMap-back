@@ -43,5 +43,14 @@ namespace TechartMap_back.DAL.Repository.Classes
             if (foundUser != null) return foundUser;
             return null;
         }
+
+        public async Task BanUser(BannedUser bannedUser)
+        {
+            var existingUser = await _context.BannedUsers.FirstOrDefaultAsync(x => x.Login == bannedUser.Login);
+
+            if (existingUser == null) await _context.BannedUsers.AddAsync(bannedUser);
+
+            await _context.SaveChangesAsync();
+        }
     }
 }

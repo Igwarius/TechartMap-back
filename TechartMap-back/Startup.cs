@@ -28,6 +28,18 @@ namespace TechartMap_back
         {
             services.AddTransient<IUserService, UserService>();
             services.AddTransient<IUserRepository, UserRepository>();
+            services.AddTransient<ICityService, CityService>();
+            services.AddTransient<ICityRepository, CityRepository>();
+            services.AddTransient<ICinemaService, CinemaService>();
+            services.AddTransient<ICinemaRepository, CinemaRepository>();
+            services.AddTransient<IFilmService, FilmService>();
+            services.AddTransient<IFilmRepository, FilmRepository>();
+            services.AddTransient<IHallService, HallService>();
+            services.AddTransient<IHallRepository, HallRepository>();
+            services.AddTransient<ISessionService, SessionService>();
+            services.AddTransient<ISessionRepository, SessionRepository>();
+            services.AddTransient<ITransactionService, TransactionService>();
+            services.AddTransient<ITransactionRepository, TransactionRepository>();
             services.AddTransient<IRefreshTokenRepository, RefreshTokenRepository>();
             services.AddTransient<IRefreshTokenService, RefreshTokenService>();
             services.AddControllers();
